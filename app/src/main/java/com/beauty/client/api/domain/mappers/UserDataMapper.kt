@@ -16,6 +16,8 @@ class UserDataMapper {
     }
 
     private fun convertUserItemListToDomain(user: ModelUser): User {
-        return User(user.id, user.username, user.photo)
+        return User(user.id, user.username,
+                user.department, user.telephone,
+                user.email, user.uri, user.photo)
     }
 }

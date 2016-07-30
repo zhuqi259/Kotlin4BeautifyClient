@@ -8,6 +8,7 @@ import com.beauty.client.api.domain.commands.RequestUserCommand
 import com.beauty.client.ui.adapter.BeautyListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         doAsync() {
             val result = RequestUserCommand(page_size = 10).execute()
             uiThread {
-                beauty_list.adapter = BeautyListAdapter(result)
+                beauty_list.adapter = BeautyListAdapter(result) { toast(it.id) }
             }
         }
     }
